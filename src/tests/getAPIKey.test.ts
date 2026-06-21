@@ -2,10 +2,6 @@ import { describe, expect, test } from "vitest";
 import { IncomingHttpHeaders } from "http";
 import { getAPIKey } from "../api/auth.ts";
 
-const headers: IncomingHttpHeaders = {
-  authorization: "ApiKey sigma1234"
-};
-
 describe("getApiKey", () => {
   test("No auth header", () => {
     const apiKey = getAPIKey({});
@@ -24,7 +20,7 @@ describe("getApiKey", () => {
 
   test("Valid auth", () => {
     const apiKey = getAPIKey({ authorization: "ApiKey sigma1234" });
-    expect(apiKey).toBe(null);
+    expect(apiKey).toBe("sigma1234");
   });
 
   test("Malformed header", () => {
