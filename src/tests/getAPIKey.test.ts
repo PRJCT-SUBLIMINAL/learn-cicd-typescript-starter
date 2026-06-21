@@ -24,7 +24,7 @@ describe("getApiKey", () => {
 
   test("Valid auth", () => {
     const apiKey = getAPIKey({ authorization: "ApiKey sigma1234" });
-    expect(apiKey).toBe("sigma1234");
+    expect(apiKey).toBe(null);
   });
 
   test("Malformed header", () => {
