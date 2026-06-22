@@ -1,6 +1,10 @@
 import { describe, expect, test } from "vitest";
-import { IncomingHttpHeaders } from "http";
 import { getAPIKey } from "../api/auth.ts";
+
+function unused() {
+  // this function does nothing
+  // and is called nowhere
+}
 
 describe("getApiKey", () => {
   test("No auth header", () => {
