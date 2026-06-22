@@ -1,11 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { getAPIKey } from "../api/auth.ts";
 
-function unused() {
-  // this function does nothing
-  // and is called nowhere
-}
-
 describe("getApiKey", () => {
   test("No auth header", () => {
     const apiKey = getAPIKey({});
