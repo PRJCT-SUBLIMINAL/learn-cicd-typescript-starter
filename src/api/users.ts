@@ -8,7 +8,7 @@ import { User } from "../db/schema.js";
 export async function handlerUsersCreate(req: Request, res: Response) {
   try {
     const { name } = req.body;
-    const apiKey = generateRandomSHA256Hash();
+    const apiKey = crypto.randomBytes();
     const userId = uuidv4();
 
     await createUser({
@@ -31,12 +31,4 @@ export async function handlerUsersCreate(req: Request, res: Response) {
 
 export async function handlerUsersGet(req: Request, res: Response, user: User) {
   respondWithJSON(res, 200, user);
-}
-
-function generateRandomSHA256Hash(): string {
-  // should we be using crypto.randomBytes instead of crypto.pseudoRandomBytes?
-  return crypto
-    .createHash("sha256")
-    .update(crypto.pseudoRandomBytes(32))
-    .digest("hex");
 }
